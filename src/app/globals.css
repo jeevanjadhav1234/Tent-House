@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-outfit);
+  
+  --color-gold-50: #fbf8eb;
+  --color-gold-100: #f4eaab;
+  --color-gold-200: #eedb75;
+  --color-gold-300: #e4c442;
+  --color-gold-400: #daa822;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #AA7C11;
+  --color-gold-700: #845e0d;
+  --color-gold-800: #62440b;
+  --color-gold-900: #422b07;
+
+  --color-maroon-50: #fdf2f3;
+  --color-maroon-100: #fbe5e7;
+  --color-maroon-200: #f7ced2;
+  --color-maroon-300: #efabb2;
+  --color-maroon-400: #e37b86;
+  --color-maroon-500: #d14d5d;
+  --color-maroon-600: #b93344;
+  --color-maroon-700: #9b2434;
+  --color-maroon-800: #4A0E17;
+  --color-maroon-900: #2D070B;
+  --color-maroon-950: #1C0508;
+
+  --color-pink-royal: #E0115F;
+  --color-pink-royal-light: #FF69B4;
+  
+  --color-purple-premium: #6A0DAD;
+  --color-purple-premium-dark: #30064F;
+  --color-purple-premium-glow: rgba(106, 13, 173, 0.4);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d0608; /* Dark maroon black */
+  --foreground: #fcf9fa;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Luxury Light Theme custom overrides */
+.light {
+  --background: #fbfcf9;
+  --foreground: #1c0f13;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+/* Custom premium scrollbar */
+.darkScroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.darkScroll::-webkit-scrollbar-track {
+  background: #120306;
+}
+
+.darkScroll::-webkit-scrollbar-thumb {
+  background: #AA7C11;
+  border-radius: 5px;
+  border: 2px solid #120306;
+}
+
+.darkScroll::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Glassmorphism base utility */
+.glass-panel {
+  background: rgba(45, 7, 11, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-panel-light {
+  background: rgba(251, 248, 235, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(170, 124, 17, 0.2);
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(-3deg) translateX(-1px);
+  }
+  100% {
+    transform: rotate(3deg) translateX(1px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.8));
+  }
+}
+
+@keyframes blink-light {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 2px rgba(255, 223, 0, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 223, 0, 0.8);
+  }
+}
+
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+/* Animation utilities */
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-sway-slow {
+  animation: sway 5s ease-in-out infinite alternate;
+}
+
+.animate-sway-fast {
+  animation: sway 3.5s ease-in-out infinite alternate;
+}
+
+.animate-glow-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-blink-1 {
+  animation: blink-light 1.2s infinite ease-in-out;
+}
+
+.animate-blink-2 {
+  animation: blink-light 1.8s infinite ease-in-out 0.3s;
+}
+
+.animate-blink-3 {
+  animation: blink-light 2.4s infinite ease-in-out 0.6s;
+}
+
+.animate-route-path {
+  stroke-dasharray: 8;
+  animation: route-dash 2s linear infinite;
+}
+
+/* Perspective settings for 3D effect */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
