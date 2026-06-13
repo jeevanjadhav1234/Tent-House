@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles, ShieldCheck, Check } from "lucide-react";
 import Image from "next/image";
+import { publicAsset } from "@/lib/assetPath";
 
 interface Slide {
   id: number;
@@ -21,21 +22,21 @@ export default function Wedding() {
       id: 1,
       title: "Grand Palace Theme",
       subtitle: "Premium Stage Setup",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Our signature stage features a massive floral mandap, a velvet royal sofa, hanging crystal chandeliers, and soft pink and gold accent lighting.",
     },
     {
       id: 2,
       title: "Royal Canopy Tent",
       subtitle: "VIP Guest Seating",
-      image: "/images/wedding_stage.png", // Re-using but with different focus description
+      image: publicAsset("/images/wedding_stage.png"), // Re-using but with different focus description
       description: "Custom premium overhead ceiling fabric overlays with integrated fairy lights, marigold garlands, and royal VIP chairs.",
     },
     {
       id: 3,
       title: "Floral Pathway Entrance",
       subtitle: "Decorative Entry Arch",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "A breathtaking entry path lined with rose strings, marigold garlands, traditional brass lamps, and spotlighting.",
     },
   ];

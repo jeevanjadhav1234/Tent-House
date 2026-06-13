@@ -3,8 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Calendar, Phone, Image as ImageIcon, Sparkles } from "lucide-react";
+import { Calendar, Phone, Image as ImageIcon } from "lucide-react";
 import Garlands from "./Garlands";
+import { publicAsset } from "@/lib/assetPath";
 
 // 3D Metallic Stage Truss spanning the entire width of the page
 const Truss = () => {
@@ -208,7 +209,7 @@ const RiggingAssembly = ({ side }: { side: "left" | "right" }) => {
         >
           {/* A. Speaker Image (Drawn FIRST so hardware is layered ON TOP) */}
           <image
-            href={isLeft ? "/images/sound_left_cropped.png" : "/images/sound_right_cropped.png"}
+            href={publicAsset(isLeft ? "/images/sound_left_cropped.png" : "/images/sound_right_cropped.png")}
             x={isLeft ? -12 : 13}
             y={242}
             width={240}
@@ -380,7 +381,7 @@ export default function Hero() {
             className="relative w-full max-w-lg aspect-[16/9] bg-neutral-900 rounded-2xl border border-gold-500/30 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] group"
           >
             <Image
-              src="/images/vip_stage_hero.png"
+              src={publicAsset("/images/vip_stage_hero.png")}
               alt="Luxury VIP Ceremony Stage Setup"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"

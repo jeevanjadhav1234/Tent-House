@@ -104,7 +104,7 @@ export default function AboutUs() {
 
               {/* Quote bubble */}
               <div className="p-4 border-l-4 border-gold-500 bg-white/2 rounded-r-lg font-serif italic text-xs sm:text-sm text-gold-300/95 max-w-xl leading-relaxed">
-                "Our business is built on trust, punctuality, and royal elegance. From a simple village ceremony to a massive city convention stage, we treat every occasion as our own family gathering."
+                &ldquo;Our business is built on trust, punctuality, and royal elegance. From a simple village ceremony to a massive city convention stage, we treat every occasion as our own family gathering.&rdquo;
               </div>
             </motion.div>
           </div>

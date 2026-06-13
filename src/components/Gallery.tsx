@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Image as ImageIcon, X, ZoomIn, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { publicAsset } from "@/lib/assetPath";
 
 interface GalleryItem {
   id: number;
@@ -16,7 +17,6 @@ interface GalleryItem {
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const categories = [
     { label: "All", id: "all" },
@@ -33,49 +33,49 @@ export default function Gallery() {
       id: 1,
       title: "Royal Mandap with Chandelier",
       category: "weddings",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "A grand wedding mandap featuring gold frames, dense floral arches, ceiling draping, and sparkling crystal chandeliers.",
     },
     {
       id: 2,
       title: "VIP Stage & Red Carpet",
       category: "vip",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "High-profile VIP stage configuration with red velvet carpeting, gold frames, and custom spotlight rigging.",
     },
     {
       id: 3,
       title: "Political Meeting Backdrop",
       category: "political",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Massive stage setup with wide platform, multiple rows of VIP seats, high-grade podiums, and political flag arrangements.",
     },
     {
       id: 4,
       title: "Shivaji Maharaj Jayanti Setup",
       category: "jayanthi",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Royal stage decoration with saffron flag banners, fort gate mockup canvas, and dense marigold garland framing.",
     },
     {
       id: 5,
       title: "School Annual Day Stage",
       category: "school",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Grand school event stage setup with color-themed backdrops, professional sound systems, and front row VIP guest seating.",
     },
     {
       id: 6,
       title: "Science Gathering Canopy",
       category: "school",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Spacious outdoor canopy and tent setup for school exhibitions, gathering areas, and science project showcases.",
     },
     {
       id: 7,
       title: "Logistics Carrier Showcase",
       category: "transport",
-      image: "/images/wedding_stage.png",
+      image: publicAsset("/images/wedding_stage.png"),
       description: "Our dedicated heavy transport carrier fleet delivering stage panels, tents, and audio speakers on schedule.",
     },
   ];
@@ -140,7 +140,7 @@ export default function Gallery() {
         {/* Masonry-like Grid */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, idx) => (
+            {filteredItems.map((item) => (
               <motion.div
                 key={item.id}
                 layout
@@ -149,8 +149,6 @@ export default function Gallery() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => setSelectedItem(item)}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
                 className="relative h-64 rounded-2xl overflow-hidden border border-white/5 cursor-pointer group shadow-lg bg-neutral-900"
               >
                 {/* Image */}

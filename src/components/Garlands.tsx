@@ -29,7 +29,7 @@ export default function Garlands({ top = 0 }: { top?: number }) {
         {Array.from({ length: 41 }).map((_, i) => {
           const t = i / 40;
           // Calculate x and y coordinates along the quadratic Bezier curves
-          let x = t * 1200;
+          const x = t * 1200;
           let y = 5;
           const curveIdx = Math.floor(t * 4); // 4 curves total
           const localT = (t * 4) % 1;

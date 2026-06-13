@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Award } from "lucide-react";
+import { Award } from "lucide-react";
 import Image from "next/image";
+import { publicAsset } from "@/lib/assetPath";
 
 interface JayanthiCard {
   title: string;
@@ -36,7 +37,7 @@ export default function Jayanthi() {
       motif: (
         <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)] bg-neutral-900 z-10">
           <Image
-            src="/images/ambedkar.jpeg"
+            src={publicAsset("/images/ambedkar.jpeg")}
             alt="Dr. B. R. Ambedkar"
             fill
             className="object-cover object-top"
@@ -61,7 +62,7 @@ export default function Jayanthi() {
       motif: (
         <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.3)] bg-neutral-900 z-10">
           <Image
-            src="/images/shivaji.jpeg"
+            src={publicAsset("/images/shivaji.jpeg")}
             alt="Chhatrapati Shivaji Maharaj"
             fill
             className="object-cover object-top"
@@ -86,7 +87,7 @@ export default function Jayanthi() {
       motif: (
         <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-red-500/40 shadow-[0_0_15px_rgba(239,68,68,0.3)] bg-neutral-900 z-10">
           <Image
-            src="/images/sevalal.jpeg"
+            src={publicAsset("/images/sevalal.jpeg")}
             alt="Sant Sevalal Maharaj"
             fill
             className="object-cover object-top"

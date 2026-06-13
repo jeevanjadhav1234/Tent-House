@@ -3,22 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { publicAsset } from "@/lib/assetPath";
+
+const menuItems = [
+  { label: "Home", id: "home" },
+  { label: "Services", id: "services" },
+  { label: "Wedding", id: "wedding" },
+  { label: "Jayanthi", id: "jayanthi" },
+  { label: "Gallery", id: "gallery" },
+  { label: "About Us", id: "about" },
+  { label: "Contact", id: "contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isLightMode, setIsLightMode] = useState(false);
-
-  const menuItems = [
-    { label: "Home", id: "home" },
-    { label: "Services", id: "services" },
-    { label: "Wedding", id: "wedding" },
-    { label: "Jayanthi", id: "jayanthi" },
-    { label: "Gallery", id: "gallery" },
-    { label: "About Us", id: "about" },
-    { label: "Contact", id: "contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +78,7 @@ export default function Navbar() {
             {/* Logo Image */}
             <div className="relative w-10 h-7.5 lg:w-12 lg:h-9 flex items-center justify-center overflow-hidden">
               <Image
-                src="/images/logo.png"
+                src={publicAsset("/images/logo.png")}
                 alt="Jai Bhavani Logo"
                 fill
                 className="object-contain transition-transform duration-300 group-hover:scale-105"
