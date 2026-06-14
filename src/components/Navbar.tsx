@@ -2,17 +2,23 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Home, Sparkles, Heart, Crown, Image as ImageIcon, Info, PhoneCall, LucideIcon } from "lucide-react";
 import { publicAsset } from "@/lib/assetPath";
 
-const menuItems = [
-  { label: "Home", id: "home" },
-  { label: "Services", id: "services" },
-  { label: "Wedding", id: "wedding" },
-  { label: "Jayanthi", id: "jayanthi" },
-  { label: "Gallery", id: "gallery" },
-  { label: "About Us", id: "about" },
-  { label: "Contact", id: "contact" },
+interface MenuItem {
+  label: string;
+  id: string;
+  icon: LucideIcon;
+}
+
+const menuItems: MenuItem[] = [
+  { label: "Home", id: "home", icon: Home },
+  { label: "Services", id: "services", icon: Sparkles },
+  { label: "Wedding", id: "wedding", icon: Heart },
+  { label: "Jayanthi", id: "jayanthi", icon: Crown },
+  { label: "Gallery", id: "gallery", icon: ImageIcon },
+  { label: "About Us", id: "about", icon: Info },
+  { label: "Contact", id: "contact", icon: PhoneCall },
 ];
 
 export default function Navbar() {
@@ -212,43 +218,50 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Centered navigation items container */}
-          <div className="flex-1 overflow-y-auto flex flex-col justify-center items-center py-12 px-6">
-            <nav className="flex flex-col items-center space-y-8 w-full max-w-sm">
-              {menuItems.map((item, idx) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    handleScrollTo(item.id);
-                    setIsOpen(false);
-                  }}
-                  className={`relative py-2 text-2xl sm:text-3xl font-sans font-bold tracking-widest uppercase transition-all duration-300 hover:text-gold-200 cursor-pointer text-center hover:scale-105 active:scale-95 ${
-                    activeSection === item.id
-                      ? "text-gold-300 scale-105"
-                      : "text-neutral-200"
-                  }`}
-                  style={{
-                    animationDelay: `${idx * 50}ms`,
-                    textShadow: "0 2px 10px rgba(0,0,0,0.8)"
-                  }}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <span className="absolute bottom-[-4px] left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-gold-500 to-pink-royal rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
-                  )}
-                </button>
-              ))}
+          {/* Left-aligned navigation items container */}
+          <div className="flex-1 overflow-y-auto py-12 px-8 sm:px-10 flex flex-col justify-start items-start">
+            <nav className="flex flex-col space-y-6 w-full max-w-sm pl-1 sm:pl-2">
+              {menuItems.map((item, idx) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      handleScrollTo(item.id);
+                      setIsOpen(false);
+                    }}
+                    className={`flex items-center space-x-4 py-2 text-2xl sm:text-3xl font-sans font-bold tracking-widest uppercase transition-all duration-300 hover:text-gold-200 cursor-pointer text-left hover:translate-x-2 active:scale-95 group ${
+                      activeSection === item.id
+                        ? "text-gold-300"
+                        : "text-neutral-200"
+                    }`}
+                    style={{
+                      animationDelay: `${idx * 50}ms`,
+                      textShadow: "0 2px 8px rgba(0,0,0,0.5)"
+                    }}
+                  >
+                    <IconComponent className={`w-6 h-6 sm:w-7 sm:h-7 shrink-0 transition-transform duration-300 group-hover:scale-110 ${activeSection === item.id ? "text-gold-300" : "text-neutral-400 group-hover:text-gold-200"}`} />
+                    <span>{item.label}</span>
+                    {activeSection === item.id && (
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-gold-500 to-pink-royal shadow-[0_0_8px_rgba(212,175,55,0.8)] ml-1" />
+                    )}
+                  </button>
+                );
+              })}
             </nav>
           </div>
 
           {/* Premium Footer CTA inside overlay */}
-          <div className="pb-10 pt-4 flex flex-col items-center space-y-2 px-6 border-t border-gold-500/10 w-full shrink-0 bg-black/10">
-            <span className="text-[10px] text-neutral-400 font-sans tracking-widest uppercase">Need Help? Contact Us</span>
+          <div className="pb-10 pt-6 flex flex-col items-start px-8 sm:px-10 border-t border-gold-500/10 w-full shrink-0 bg-[#0d0608]/40">
+            <span className="text-[10px] sm:text-xs text-neutral-400 font-sans tracking-widest uppercase mb-1">
+              Need Help? Contact Us
+            </span>
             <a
               href="tel:+916366447720"
-              className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 tracking-wider hover:underline"
+              className="flex items-center space-x-2.5 text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 tracking-wider hover:underline transition-all duration-300"
             >
-              +91 63664 47720
+              <PhoneCall className="w-5 h-5 text-gold-400 shrink-0" />
+              <span>+91 63664 47720</span>
             </a>
           </div>
         </div>
