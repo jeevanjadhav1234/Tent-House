@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Tent House Navanihal",
     "Wedding Decoration Kalaburagi",
     "VIP Tent Setup Kamalapur",
-    "Sound System Rental Gulbarga",
+    "Sound System & LED Wall Rental Gulbarga",
     "Stage Decoration Karnataka",
     "LED Wall Rental Kalaburagi",
     "Jayanthi Event Setup",

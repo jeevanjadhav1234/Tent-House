@@ -8,7 +8,9 @@ import {
   Volume2,
   Truck,
   Flame,
+  Monitor,
 } from "lucide-react";
+import { publicAsset } from "@/lib/assetPath";
 
 interface ServiceItem {
   title: string;
@@ -16,6 +18,9 @@ interface ServiceItem {
   icon: React.ReactNode;
   gradient: string;
   glow: string;
+  bgImage?: string;
+  hideCTA?: boolean;
+  innerGlow?: string;
 }
 
 export default function Services() {
@@ -24,42 +29,59 @@ export default function Services() {
       title: "Wedding Decoration",
       description:
         "Royal wedding mandaps, majestic floral designs, entryways, luxury sofas, and elegant drapery in gold, white, and pink themes.",
-      icon: <Heart className="w-8 h-8 text-pink-royal" />,
-      gradient: "from-pink-royal via-gold-500 to-maroon-800",
-      glow: "rgba(224, 17, 95, 0.35)",
+      icon: <Heart className="w-8 h-8 text-gold-300 group-hover:text-pink-royal-light transition-colors duration-300" />,
+      gradient: "from-gold-400 via-pink-royal-light to-gold-600",
+      glow: "radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(224,17,95,0.2) 100%)",
+      bgImage: publicAsset("/images/wedding_card_bg.jpeg"),
+      innerGlow: "radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, rgba(224, 17, 95, 0.08) 100%)",
     },
 
     {
       title: "VIP Tent Setup",
       description:
         "Spacious premium VIP tents, climate comfort, high-quality ceiling cloth overlays, and luxury furniture seating.",
-      icon: <Tent className="w-8 h-8 text-gold-500" />,
-      gradient: "from-maroon-800 via-gold-500 to-neutral-900",
-      glow: "rgba(212, 175, 55, 0.35)",
+      icon: <Tent className="w-8 h-8 text-gold-400 group-hover:text-amber-200 transition-colors duration-300" />,
+      gradient: "from-amber-600 via-gold-300 to-amber-900",
+      glow: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, rgba(245,158,11,0.2) 100%)",
+      bgImage: publicAsset("/images/vip_tent_bg.jpeg"),
+      hideCTA: true,
+      innerGlow: "radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, rgba(253, 253, 250, 0.05) 100%)",
     },
     {
-      title: "Sound System Rental",
+      title: "Sound System & LED Wall",
       description:
-        "Cinematic high-fidelity 3D line-array sound systems with 4 tops and dual subwoofers for crystal-clear concert audio.",
-      icon: <Volume2 className="w-8 h-8 text-indigo-400" />,
-      gradient: "from-indigo-600 via-purple-premium to-pink-royal",
-      glow: "rgba(106, 13, 173, 0.35)",
-    },
-    {
-      title: "Transportation Services",
-      description:
-        "Reliable on-time logistics and goods carrier transport for smooth setup of stage, tent, and audio equipment.",
-      icon: <Truck className="w-8 h-8 text-amber-500" />,
-      gradient: "from-amber-600 via-gold-500 to-maroon-950",
-      glow: "rgba(245, 158, 11, 0.35)",
+        "Professional sound systems and high-resolution LED walls for weddings, political events, cultural programs, and VIP functions. Complete audio-visual solutions with crystal-clear sound and stunning visuals. Suitable for events of all sizes.",
+      icon: (
+        <div className="relative w-8 h-8">
+          <Volume2 className="w-5 h-5 text-blue-400 absolute top-0 left-0" />
+          <Monitor className="w-5 h-5 text-gold-300 group-hover:text-purple-400 absolute bottom-0 right-0 transition-colors duration-300" />
+        </div>
+      ),
+      gradient: "from-blue-600 via-purple-premium to-gold-400",
+      glow: "radial-gradient(circle, rgba(106,13,173,0.45) 0%, rgba(30,58,138,0.3) 50%, rgba(212,175,55,0.2) 100%)",
+      bgImage: publicAsset("/images/sound_led_bg.jpeg"),
+      hideCTA: true,
+      innerGlow: "radial-gradient(circle at center, rgba(106, 13, 173, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(212, 175, 55, 0.05) 100%)",
     },
     {
       title: "Jayanthi Celebrations",
       description:
-        "Respectful setups for Dr. B. R. Ambedkar, Shivaji Maharaj, and Sant Sevalal Maharaj Jayanthi programs.",
-      icon: <Flame className="w-8 h-8 text-red-500" />,
-      gradient: "from-red-600 via-amber-500 to-blue-600",
-      glow: "rgba(239, 68, 68, 0.35)",
+        "Professional stage setups and event arrangements for Ambedkar Jayanthi, Shivaji Maharaj Jayanthi, Sant Sevalal Maharaj Jayanthi, and other cultural celebrations.",
+      icon: <Flame className="w-8 h-8 text-orange-500 group-hover:text-gold-300 transition-colors duration-300" />,
+      gradient: "from-orange-600 via-gold-400 to-amber-800",
+      glow: "radial-gradient(circle, rgba(249,115,22,0.45) 0%, rgba(212,175,55,0.25) 50%, rgba(180,83,9,0.1) 100%)",
+      bgImage: publicAsset("/images/jayanthi_bg.jpeg"),
+      innerGlow: "radial-gradient(circle at center, rgba(249, 115, 22, 0.12) 0%, rgba(212, 175, 55, 0.08) 50%, rgba(245, 158, 11, 0.04) 100%)",
+    },
+    {
+      title: "Transportation Services",
+      description:
+        "Reliable transportation services with Eicher trucks and logistics support for tents, sound systems, LED walls, stage materials, and event equipment.",
+      icon: <Truck className="w-8 h-8 text-orange-500 group-hover:text-gold-300 transition-colors duration-300" />,
+      gradient: "from-orange-500 via-zinc-400 to-gold-500",
+      glow: "radial-gradient(circle, rgba(249,115,22,0.4) 0%, rgba(148,163,184,0.25) 50%, rgba(212,175,55,0.15) 100%)",
+      bgImage: publicAsset("/images/transportation_bg.jpeg"),
+      innerGlow: "radial-gradient(circle at center, rgba(249, 115, 22, 0.12) 0%, rgba(148, 163, 184, 0.08) 50%, rgba(212, 175, 55, 0.04) 100%)",
     },
   ];
 
@@ -136,14 +158,40 @@ export default function Services() {
               ></div>
 
               {/* Main Card */}
-              <div className="h-full rounded-2xl p-6 glass-panel flex flex-col justify-between relative overflow-hidden transition-all duration-300 group-hover:border-gold-500/40 min-h-[280px]">
+              <div className={`h-full rounded-2xl p-6 glass-panel flex flex-col justify-between relative overflow-hidden transition-all duration-300 group-hover:border-gold-500/40 min-h-[280px] ${
+                service.bgImage ? "group-hover:shadow-[0_0_25px_rgba(212,175,55,0.25)] group-hover:border-gold-400/50" : ""
+              }`}>
                 {/* Thin Gradient Border Line at the top */}
                 <div
                   className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${service.gradient}`}
                 ></div>
 
+                {/* Background Image with Zoom and Overlay (if present) */}
+                {service.bgImage && (
+                  <>
+                    <div className="absolute inset-0 overflow-hidden">
+                      <img
+                        src={service.bgImage}
+                        alt=""
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                    </div>
+                    {/* Dark gradient overlay to ensure readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/55"></div>
+                    {/* Inner gold/pink gradient overlay for luxury feel */}
+                    {service.innerGlow && (
+                      <div
+                        className="absolute inset-0 mix-blend-color-dodge opacity-60 pointer-events-none"
+                        style={{
+                          background: service.innerGlow
+                        }}
+                      ></div>
+                    )}
+                  </>
+                )}
+
                 {/* Content */}
-                <div>
+                <div className="relative z-10">
                   {/* Animated Icon Circle */}
                   <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 mb-6 group-hover:bg-gradient-to-tr group-hover:from-white/10 group-hover:to-gold-500/10 group-hover:border-gold-500/30 transition-all duration-300">
                     <div className="transition-transform duration-500 group-hover:scale-110">
@@ -155,18 +203,22 @@ export default function Services() {
                     {service.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+                  <p className={`text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 ${
+                    service.bgImage ? "line-clamp-3" : ""
+                  }`}>
                     {service.description}
                   </p>
                 </div>
 
                 {/* CTA Line */}
-                <div className="mt-8 flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase">
-                  <span>Explore More</span>
-                  <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                    →
-                  </span>
-                </div>
+                {!service.hideCTA && (
+                  <div className="mt-8 flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase relative z-10">
+                    <span>Explore More</span>
+                    <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                      →
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

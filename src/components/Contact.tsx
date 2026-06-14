@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, MessageCircle, Send, Star, CheckCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Send, Star, CheckCircle, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -194,7 +194,7 @@ export default function Contact() {
                     >
                       <option value="wedding">Wedding Decoration</option>
                       <option value="vip-tent">VIP Tent Arrangements</option>
-                      <option value="sound-system">Sound System Rental</option>
+                      <option value="sound-system">Sound System & LED Wall</option>
                       <option value="jayanthi">Jayanthi Setup</option>
                       <option value="other">Other Event Setups</option>
                     </select>
@@ -269,18 +269,30 @@ export default function Contact() {
               </div>
 
               {/* Map frame viewport */}
-              <div className="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-gold-500/20 bg-neutral-900 shadow-2xl relative">
+              <div className="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-[0_0_30px_rgba(212,175,55,0.25)] relative group">
+                
+                {/* Floating "Open in Maps" Button */}
+                <a
+                  href="https://www.google.com/maps?cid=5446970792604097249"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 right-4 z-10 px-4 py-2 bg-neutral-950/80 hover:bg-neutral-950 backdrop-blur-md border border-gold-500/30 hover:border-gold-500/80 text-gold-400 hover:text-white rounded-xl text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 flex items-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.5)] group/btn hover:scale-105"
+                >
+                  <span>Open in Maps</span>
+                  <ExternalLink size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
+
                 {/* Embed Map Iframe */}
                 <iframe
                   title="Jai Bhavani Tent House Navanihal Google Map location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3811.5173775438834!2d76.9942732!3d17.5815668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf8b975e52edb5%3A0xe543e4983a54b38d!2sJai%20Bhavani%20Tent%20House!5e0!3m2!1sen!2sin!4v1718181818181!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.44933161933!2d76.9600663754074!3d17.581385383339292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc8cd026c131e97%3A0x4b9787139b185ae1!2sJai%20Bhavani%20Tent%20House%20Navanihal!5e0!3m2!1sen!2sin!4v1781414051839!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale invert opacity-80"
+                  className="w-full h-full"
                 ></iframe>
               </div>
             </motion.div>

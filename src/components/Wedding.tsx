@@ -1,52 +1,44 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles, ShieldCheck, Check } from "lucide-react";
 import Image from "next/image";
 import { publicAsset } from "@/lib/assetPath";
 
-interface Slide {
-  id: number;
-  title: string;
-  subtitle: string;
-  image: string;
-  description: string;
-}
+const slideshowImages = [
+  publicAsset("/images/slideshow/a.jpeg"),
+  publicAsset("/images/slideshow/b.jpeg"),
+  publicAsset("/images/slideshow/Bass.jpeg"),
+  publicAsset("/images/slideshow/c.jpeg"),
+  publicAsset("/images/slideshow/d.jpeg"),
+  publicAsset("/images/slideshow/e.jpeg"),
+  publicAsset("/images/slideshow/f.jpeg"),
+  publicAsset("/images/slideshow/g.jpeg"),
+  publicAsset("/images/slideshow/h.jpeg"),
+  publicAsset("/images/slideshow/i.jpeg"),
+  publicAsset("/images/slideshow/j.jpeg"),
+  publicAsset("/images/slideshow/k.jpeg"),
+  publicAsset("/images/slideshow/l.jpeg"),
+  publicAsset("/images/slideshow/m.jpeg"),
+];
 
 export default function Wedding() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const slides: Slide[] = [
-    {
-      id: 1,
-      title: "Grand Palace Theme",
-      subtitle: "Premium Stage Setup",
-      image: publicAsset("/images/wedding_stage.png"),
-      description: "Our signature stage features a massive floral mandap, a velvet royal sofa, hanging crystal chandeliers, and soft pink and gold accent lighting.",
-    },
-    {
-      id: 2,
-      title: "Royal Canopy Tent",
-      subtitle: "VIP Guest Seating",
-      image: publicAsset("/images/wedding_stage.png"), // Re-using but with different focus description
-      description: "Custom premium overhead ceiling fabric overlays with integrated fairy lights, marigold garlands, and royal VIP chairs.",
-    },
-    {
-      id: 3,
-      title: "Floral Pathway Entrance",
-      subtitle: "Decorative Entry Arch",
-      image: publicAsset("/images/wedding_stage.png"),
-      description: "A breathtaking entry path lined with rose strings, marigold garlands, traditional brass lamps, and spotlighting.",
-    },
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [currentImageIndex]);
 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentImageIndex((prev) => (prev - 1 + slideshowImages.length) % slideshowImages.length);
   };
 
   const features = [
@@ -148,24 +140,24 @@ export default function Wedding() {
             >
               {/* Slider Image Container */}
               <div className="absolute inset-0">
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   <motion.div
-                    key={currentSlide}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative w-full h-full"
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full"
                   >
                     <Image
-                      src={slides[currentSlide].image}
-                      alt={slides[currentSlide].title}
+                      src={slideshowImages[currentImageIndex]}
+                      alt="Garden Palace Theme Setup"
                       fill
                       priority
                       className="object-cover"
                     />
                     {/* Shadow Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/10"></div>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -173,25 +165,25 @@ export default function Wedding() {
               {/* Slide Details Content */}
               <div className="relative z-10 p-6 sm:p-8 w-full">
                 <span className="text-[10px] sm:text-xs font-sans font-bold text-gold-400 uppercase tracking-widest">
-                  {slides[currentSlide].subtitle}
+                  Premium Stage Setup
                 </span>
                 <h4 className="text-xl sm:text-2xl font-serif font-bold text-white mt-1">
-                  {slides[currentSlide].title}
+                  Garden Palace Theme
                 </h4>
                 <p className="text-xs sm:text-sm text-neutral-300 font-sans mt-2 max-w-lg leading-relaxed">
-                  {slides[currentSlide].description}
+                  Elegant garden-themed stage setup featuring premium tent decoration, luxury seating arrangements, decorative lighting, floral elements, and a grand event atmosphere for weddings, receptions, and VIP functions.
                 </p>
 
                 {/* Slider Controls */}
                 <div className="flex justify-between items-center mt-6">
                   {/* Indicators */}
-                  <div className="flex space-x-2">
-                    {slides.map((_, idx) => (
+                  <div className="flex space-x-1.5 max-w-[150px] sm:max-w-xs overflow-x-auto py-1 scrollbar-none">
+                    {slideshowImages.map((_, idx) => (
                       <button
                         key={idx}
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          currentSlide === idx ? "w-6 bg-gold-400" : "bg-neutral-600"
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 shrink-0 ${
+                          currentImageIndex === idx ? "w-4 bg-gold-400" : "bg-neutral-600 hover:bg-neutral-500"
                         }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
@@ -199,7 +191,7 @@ export default function Wedding() {
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-2 shrink-0">
                     <button
                       onClick={handlePrev}
                       className="p-2 rounded-full bg-neutral-950/60 border border-white/10 hover:border-gold-500/50 hover:bg-neutral-950 text-white transition-colors cursor-pointer"
