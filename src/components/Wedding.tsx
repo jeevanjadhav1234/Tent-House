@@ -165,14 +165,11 @@ export default function Wedding() {
               {/* Slide Details Content */}
               <div className="relative z-10 p-6 sm:p-8 w-full">
                 <span className="text-[10px] sm:text-xs font-sans font-bold text-gold-400 uppercase tracking-widest">
-                  Premium Stage Setup
+                  PREMIUM STAGE SETUP
                 </span>
                 <h4 className="text-xl sm:text-2xl font-serif font-bold text-white mt-1">
                   Garden Palace Theme
                 </h4>
-                <p className="text-xs sm:text-sm text-neutral-300 font-sans mt-2 max-w-lg leading-relaxed">
-                  Elegant garden-themed stage setup featuring premium tent decoration, luxury seating arrangements, decorative lighting, floral elements, and a grand event atmosphere for weddings, receptions, and VIP functions.
-                </p>
 
                 {/* Slider Controls */}
                 <div className="flex justify-between items-center mt-6">

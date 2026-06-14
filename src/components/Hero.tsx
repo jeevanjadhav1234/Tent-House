@@ -314,14 +314,14 @@ export default function Hero() {
         {/* Center: Hero Information & VIP Stage Mockup */}
         <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 flex flex-col items-center text-center">
           
-          {/* Tagline Badge */}
+          {/* Tagline Standalone Text */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center justify-center px-6 py-2 rounded-full border border-gold-500/20 bg-neutral-950/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_15px_rgba(212,175,55,0.05)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.7),0_0_25px_rgba(212,175,55,0.15)] hover:border-gold-500/30 transition-all duration-500 mb-8 cursor-default group"
+            className="mb-8 cursor-default select-none"
           >
-            <span className="text-xs font-sans tracking-[0.25em] font-black uppercase bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] group-hover:scale-[1.01] transition-transform duration-500">
+            <span className="text-xs sm:text-sm font-sans tracking-[0.35em] font-black uppercase bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-300 hover:scale-[1.03] inline-block">
               Event Management
             </span>
           </motion.div>

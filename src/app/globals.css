@@ -180,3 +180,28 @@ body {
   transform-style: preserve-3d;
 }
 
+/* Mobile-only overrides for blinking decorative lights (below 768px) */
+@media (max-w: 767px) {
+  @keyframes blink-light-mobile {
+    0%, 100% {
+      opacity: 0.25;
+      box-shadow: 0 0 1px rgba(255, 223, 0, 0.15);
+    }
+    50% {
+      opacity: 0.5;
+      box-shadow: 0 0 6px rgba(255, 223, 0, 0.4);
+    }
+  }
+
+  .animate-blink-1 {
+    animation-name: blink-light-mobile !important;
+  }
+  .animate-blink-2 {
+    animation-name: blink-light-mobile !important;
+  }
+  .animate-blink-3 {
+    animation-name: blink-light-mobile !important;
+  }
+}
+
+

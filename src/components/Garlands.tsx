@@ -125,24 +125,24 @@ export default function Garlands({ top = 0 }: { top?: number }) {
       </div>
 
       {/* Blinking Festival Bulbs hanging at intervals */}
-      <div className="absolute top-2 left-0 w-full flex justify-between px-16 pointer-events-none">
+      <div className="absolute top-2 left-0 w-full flex justify-between px-6 md:px-16 pointer-events-none">
         {Array.from({ length: 16 }).map((_, i) => {
           const blinkClass = i % 3 === 0 ? "animate-blink-1" : i % 3 === 1 ? "animate-blink-2" : "animate-blink-3";
           
           return (
-            <div key={i} className="flex flex-col items-center">
+            <div key={i} className={`flex flex-col items-center ${i % 2 !== 0 ? "hidden md:flex" : "flex"}`}>
               {/* Wire */}
-              <div className="w-[1px] h-6 bg-neutral-600"></div>
+              <div className="w-[1px] h-4 md:h-6 bg-neutral-600"></div>
               {/* Bulb */}
               <div
-                className={`w-3 h-4 rounded-full ${blinkClass} bg-amber-400`}
+                className={`w-2.5 h-3.5 md:w-3 md:h-4 rounded-full ${blinkClass} bg-amber-400`}
                 style={{
                   borderRadius: "50% 50% 50% 50% / 40% 40% 60% 60%",
-                  boxShadow: "0 0 8px rgba(251,191,36,0.6)",
+                  boxShadow: "0 0 4px rgba(251,191,36,0.3)",
                 }}
               >
                 {/* Filament */}
-                <div className="w-1 h-[2px] bg-white mx-auto mt-[1px] opacity-70"></div>
+                <div className="w-0.5 h-[1px] md:w-1 md:h-[2px] bg-white mx-auto mt-[1px] opacity-70"></div>
               </div>
             </div>
           );

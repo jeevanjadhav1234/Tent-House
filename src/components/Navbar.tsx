@@ -22,6 +22,17 @@ export default function Navbar() {
   const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
@@ -156,37 +167,89 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Full-screen Overlay */}
         <div
-          className={`lg:hidden absolute top-full left-0 w-full mt-0 transition-all duration-500 ease-in-out z-30 ${
+          className={`lg:hidden fixed inset-0 w-full h-screen bg-[#0d0608]/98 backdrop-blur-md z-[100] transition-all duration-500 ease-in-out flex flex-col ${
             isOpen
               ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-4 pointer-events-none"
+              : "opacity-0 -translate-y-full pointer-events-none"
           }`}
         >
-          <div className="glass-panel border-t border-gold-500/20 px-4 pt-4 pb-6 space-y-2 shadow-2xl bg-black/95 backdrop-blur-md w-full">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleScrollTo(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-md text-sm font-sans font-medium uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeSection === item.id
-                    ? "bg-gold-500/10 text-gold-300 border-l-2 border-gold-500"
-                    : "text-neutral-300 hover:bg-neutral-800/40 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="pt-4 flex justify-between items-center px-4 border-t border-gold-500/10">
-              <span className="text-xs text-neutral-400">Need Help?</span>
-              <a
-                href="tel:+916366447720"
-                className="text-xs font-bold text-gold-300 tracking-wider hover:underline"
-              >
-                +91 63664 47720
-              </a>
+          {/* Header bar mirroring main navbar */}
+          <div className="h-[72px] px-6 sm:px-10 flex items-center justify-between border-b border-gold-500/10 w-full shrink-0">
+            <div
+              onClick={() => {
+                handleScrollTo("home");
+                setIsOpen(false);
+              }}
+              className="flex items-center space-x-2 cursor-pointer select-none"
+            >
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                <Image
+                  src={publicAsset("/images/logo.png")}
+                  alt="Jai Bhavani Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-lg font-serif font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500">
+                  JAI BHAVANI
+                </h1>
+                <span className="text-[8px] tracking-[0.25em] text-pink-royal font-sans font-semibold uppercase">
+                  Tent House & Events
+                </span>
+              </div>
             </div>
+
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-2 rounded-md text-gold-300 border border-gold-500/20 hover:border-gold-500/60 cursor-pointer"
+              aria-label="Close Menu"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* Centered navigation items container */}
+          <div className="flex-1 overflow-y-auto flex flex-col justify-center items-center py-12 px-6">
+            <nav className="flex flex-col items-center space-y-8 w-full max-w-sm">
+              {menuItems.map((item, idx) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    handleScrollTo(item.id);
+                    setIsOpen(false);
+                  }}
+                  className={`relative py-2 text-2xl sm:text-3xl font-sans font-bold tracking-widest uppercase transition-all duration-300 hover:text-gold-200 cursor-pointer text-center hover:scale-105 active:scale-95 ${
+                    activeSection === item.id
+                      ? "text-gold-300 scale-105"
+                      : "text-neutral-200"
+                  }`}
+                  style={{
+                    animationDelay: `${idx * 50}ms`,
+                    textShadow: "0 2px 10px rgba(0,0,0,0.8)"
+                  }}
+                >
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span className="absolute bottom-[-4px] left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-gold-500 to-pink-royal rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
+                  )}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          {/* Premium Footer CTA inside overlay */}
+          <div className="pb-10 pt-4 flex flex-col items-center space-y-2 px-6 border-t border-gold-500/10 w-full shrink-0 bg-black/10">
+            <span className="text-[10px] text-neutral-400 font-sans tracking-widest uppercase">Need Help? Contact Us</span>
+            <a
+              href="tel:+916366447720"
+              className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 tracking-wider hover:underline"
+            >
+              +91 63664 47720
+            </a>
           </div>
         </div>
       </header>
