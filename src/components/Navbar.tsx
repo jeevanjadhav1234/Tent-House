@@ -76,12 +76,12 @@ export default function Navbar() {
             className="flex items-center space-x-2 xl:space-x-3 cursor-pointer select-none group py-1 shrink-0"
           >
             {/* Logo Image */}
-            <div className="relative w-10 h-7.5 lg:w-12 lg:h-9 flex items-center justify-center overflow-hidden">
+            <div className="relative w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center">
               <Image
                 src={publicAsset("/images/logo.png")}
                 alt="Jai Bhavani Logo"
                 fill
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
+                className="object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]"
                 priority
               />
             </div>
