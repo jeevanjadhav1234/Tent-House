@@ -111,10 +111,10 @@ const RiggingAssembly = ({ side }: { side: "left" | "right" }) => {
       initial={{ opacity: 0, y: -80 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, delay: isLeft ? 0.3 : 0.6 }}
-      className={`absolute top-[72px] z-30 pointer-events-none select-none origin-top scale-[0.55] sm:scale-[0.7] md:scale-[0.85] lg:scale-100 ${
+      className={`absolute top-[56px] sm:top-[64px] md:top-[72px] z-20 pointer-events-none select-none origin-top scale-[0.45] sm:scale-[0.56] md:scale-[0.85] lg:scale-100 ${
         isLeft 
-          ? "left-[1%] sm:left-[2%] md:left-[3%] lg:left-[4%] xl:left-[6%]" 
-          : "right-[1%] sm:right-[2%] md:right-[3%] lg:right-[4%] xl:right-[6%]"
+          ? "left-[-55px] sm:left-[-35px] md:left-[3%] lg:left-[4%] xl:left-[6%]" 
+          : "right-[-55px] sm:right-[-35px] md:right-[3%] lg:right-[4%] xl:right-[6%]"
       }`}
       style={{
         width: "240px",
@@ -309,7 +309,7 @@ export default function Hero() {
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-premium-dark/20 rounded-full blur-[100px] -z-10 animate-glow-pulse"></div>
 
       {/* VIP Stage Container Grid */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8 items-center z-10">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8 items-center z-30">
         
         {/* Center: Hero Information & VIP Stage Mockup */}
         <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 flex flex-col items-center text-center">
@@ -322,7 +322,7 @@ export default function Hero() {
             className="inline-flex items-center justify-center px-6 py-2 rounded-full border border-gold-500/20 bg-neutral-950/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_15px_rgba(212,175,55,0.05)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.7),0_0_25px_rgba(212,175,55,0.15)] hover:border-gold-500/30 transition-all duration-500 mb-8 cursor-default group"
           >
             <span className="text-xs font-sans tracking-[0.25em] font-black uppercase bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] group-hover:scale-[1.01] transition-transform duration-500">
-              VIP Event Management Services
+              Event Management
             </span>
           </motion.div>
 
