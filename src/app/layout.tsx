@@ -14,10 +14,33 @@ const outfit = Outfit({
   display: "swap",
 });
 
+// export const metadata: Metadata = {
+//   title: "Jai Bhavani Tent House | Luxury Wedding Setup, VIP Stage & Live Sound in Kalaburagi",
+//   description:
+//     "Jai Bhavani Tent House based in Navanihal, Kamalapur, Kalaburagi (Gulbarga), Karnataka. We offer VIP tent arrangements, wedding stage decorations, live sound systems, and Jayanthi events setup.",
+//   keywords: [
+//     "Jai Bhavani Tent House",
+//     "Tent House Navanihal",
+//     "Wedding Decoration Kalaburagi",
+//     "VIP Tent Setup Kamalapur",
+//     "Sound System & LED Wall Rental Gulbarga",
+//     "Stage Decoration Karnataka",
+//     "LED Wall Rental Kalaburagi",
+//     "Jayanthi Event Setup",
+//     "Dr. B. R. Ambedkar Jayanti Stage",
+//     "Chhatrapati Shivaji Maharaj Jayanti Setup",
+//   ],
+//   authors: [{ name: "Jai Bhavani Tent House" }],
+// };
 export const metadata: Metadata = {
   title: "Jai Bhavani Tent House | Luxury Wedding Setup, VIP Stage & Live Sound in Kalaburagi",
   description:
     "Jai Bhavani Tent House based in Navanihal, Kamalapur, Kalaburagi (Gulbarga), Karnataka. We offer VIP tent arrangements, wedding stage decorations, live sound systems, and Jayanthi events setup.",
+
+  verification: {
+    google: "UmFWvK59XiHM0Yb-TpMQuSnxzyGEkYhFkYxEhuhbp9I",
+  },
+
   keywords: [
     "Jai Bhavani Tent House",
     "Tent House Navanihal",
@@ -32,7 +55,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jai Bhavani Tent House" }],
 };
-
 export const viewport = {
   width: "device-width",
   initialScale: 1.0,
