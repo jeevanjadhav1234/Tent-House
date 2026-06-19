@@ -321,7 +321,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="mb-8 cursor-default select-none"
           >
-            <span className="text-xs sm:text-sm font-sans tracking-[0.35em] font-black uppercase bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-300 hover:scale-[1.03] inline-block">
+            <span className="hero-tagline text-xs sm:text-sm font-sans tracking-[0.35em] font-black uppercase bg-gradient-to-r from-gold-300 via-gold-100 to-gold-500 bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-300 hover:scale-[1.03] inline-block">
               Event Management
             </span>
           </motion.div>
