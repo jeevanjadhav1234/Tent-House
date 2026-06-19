@@ -39,6 +39,11 @@
   --background: #0d0608; /* Dark maroon black */
   --foreground: #fcf9fa;
   color-scheme: dark;
+
+  /* Jayanthi Cards Gradient Variables (Dark Mode / Translucent) */
+  --jayanthi-shivaji-bg: linear-gradient(to bottom right, rgba(69, 26, 3, 0.85), rgba(67, 20, 7, 0.7), rgba(10, 10, 10, 0.9));
+  --jayanthi-ambedkar-bg: linear-gradient(to bottom right, rgba(23, 37, 84, 0.85), rgba(30, 27, 75, 0.7), rgba(10, 10, 10, 0.9));
+  --jayanthi-sevalal-bg: linear-gradient(to bottom right, rgba(69, 10, 10, 0.85), rgba(28, 5, 8, 0.7), rgba(10, 10, 10, 0.9));
 }
 
 /* Luxury Light Theme custom overrides */
@@ -46,6 +51,11 @@
   --background: #fbfcf9;
   --foreground: #1c0f13;
   color-scheme: light;
+
+  /* Jayanthi Cards Gradient Variables (Light Mode / Solid to block light bleed-through) */
+  --jayanthi-shivaji-bg: linear-gradient(to bottom right, #3d1704, #331007, #0a0a0a);
+  --jayanthi-ambedkar-bg: linear-gradient(to bottom right, #162049, #191537, #0a0a0a);
+  --jayanthi-sevalal-bg: linear-gradient(to bottom right, #3d090a, #180508, #0a0a0a);
 }
 
 body {
@@ -344,6 +354,26 @@ html.light #jayanthi h2 {
 }
 html.light #jayanthi p {
   color: #6B7280 !important;
+}
+
+/* Ensure Jayanthi cards maintain high contrast and richness in light mode */
+html.light #jayanthi .glass-panel {
+  background-color: transparent !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(212, 175, 55, 0.15) !important;
+}
+
+html.light #jayanthi .glass-panel h3 {
+  color: #f5f5f5 !important;
+}
+
+html.light #jayanthi .glass-panel span.text-neutral-300 {
+  color: #d4d4d4 !important;
+}
+
+html.light #jayanthi .glass-panel span.text-neutral-400 {
+  color: #a3a3a3 !important;
 }
 
 /* Gallery */

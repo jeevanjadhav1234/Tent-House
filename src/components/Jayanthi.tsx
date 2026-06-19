@@ -9,6 +9,7 @@ import { publicAsset } from "@/lib/assetPath";
 interface JayanthiCard {
   title: string;
   themeColor: string;
+  themeBg: string;
   textColor: string;
   badge: string;
   borderColor: string;
@@ -22,11 +23,12 @@ export default function Jayanthi() {
   const cards: JayanthiCard[] = [
     {
       title: "Chhatrapati Shivaji Maharaj Jayanti",
-      themeColor: "from-amber-900/60 to-orange-950/80",
-      textColor: "text-amber-500",
-      borderColor: "group-hover:border-amber-500/50",
-      ledColor: "rgba(245, 158, 11, 0.4)",
-      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(194,65,12,0.35),transparent_70%)]",
+      themeColor: "from-amber-950/85 via-orange-950/70 to-neutral-950/90",
+      themeBg: "var(--jayanthi-shivaji-bg)",
+      textColor: "text-amber-400",
+      borderColor: "group-hover:border-amber-400/50",
+      ledColor: "rgba(245, 158, 11, 0.55)",
+      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.6),transparent_70%)]",
       badge: "Royal Saffron Theme",
       specs: [
         "Fort background canvas stage sets",
@@ -35,7 +37,7 @@ export default function Jayanthi() {
         "High-fidelity live sound & DJ set",
       ],
       motif: (
-        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.3)] bg-neutral-900 z-10">
+        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400/50 shadow-[0_0_18px_rgba(245,158,11,0.45)] bg-neutral-900 z-10">
           <Image
             src={publicAsset("/images/shivaji.jpeg")}
             alt="Chhatrapati Shivaji Maharaj"
@@ -47,11 +49,12 @@ export default function Jayanthi() {
     },
     {
       title: "Dr. B. R. Ambedkar Jayanti",
-      themeColor: "from-blue-900/60 to-blue-950/80",
+      themeColor: "from-blue-950/85 via-indigo-950/70 to-neutral-950/90",
+      themeBg: "var(--jayanthi-ambedkar-bg)",
       textColor: "text-blue-400",
-      borderColor: "group-hover:border-blue-500/50",
-      ledColor: "rgba(59, 130, 246, 0.4)",
-      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(29,78,216,0.3),transparent_70%)]",
+      borderColor: "group-hover:border-blue-400/50",
+      ledColor: "rgba(59, 130, 246, 0.55)",
+      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.6),transparent_70%)]",
       badge: "Respectful Blue Theme",
       specs: [
         "Massive blue LED backdrop screen",
@@ -60,7 +63,7 @@ export default function Jayanthi() {
         "VIP seating & red carpet runway",
       ],
       motif: (
-        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)] bg-neutral-900 z-10">
+        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-400/50 shadow-[0_0_18px_rgba(59,130,246,0.45)] bg-neutral-900 z-10">
           <Image
             src={publicAsset("/images/ambedkar.jpeg")}
             alt="Dr. B. R. Ambedkar"
@@ -72,11 +75,12 @@ export default function Jayanthi() {
     },
     {
       title: "Sant Sevalal Maharaj Jayanti",
-      themeColor: "from-red-900/40 to-neutral-900/90",
-      textColor: "text-red-500",
-      borderColor: "group-hover:border-red-500/50",
-      ledColor: "rgba(239, 68, 68, 0.4)",
-      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.25),transparent_70%)]",
+      themeColor: "from-red-950/85 via-maroon-950/70 to-neutral-950/90",
+      themeBg: "var(--jayanthi-sevalal-bg)",
+      textColor: "text-red-400",
+      borderColor: "group-hover:border-red-400/50",
+      ledColor: "rgba(239, 68, 68, 0.55)",
+      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(239,68,68,0.6),transparent_70%)]",
       badge: "Spiritual Floral Theme",
       specs: [
         "Temple backdrop structures & sets",
@@ -85,7 +89,7 @@ export default function Jayanthi() {
         "Cultural stage audio & speech mics",
       ],
       motif: (
-        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-red-500/40 shadow-[0_0_15px_rgba(239,68,68,0.3)] bg-neutral-900 z-10">
+        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-red-400/50 shadow-[0_0_18px_rgba(239,68,68,0.45)] bg-neutral-900 z-10">
           <Image
             src={publicAsset("/images/sevalal.jpeg")}
             alt="Sant Sevalal Maharaj"
@@ -142,6 +146,7 @@ export default function Jayanthi() {
               {/* Main Card Frame */}
               <div
                 className={`h-full p-8 border border-white/5 rounded-2xl glass-panel relative overflow-hidden transition-all duration-300 ${card.borderColor}`}
+                style={{ background: card.themeBg }}
               >
                 {/* Cultural Radial Gradient Background */}
                 <div className={`absolute inset-0 -z-10 ${card.bgGradient}`}></div>
