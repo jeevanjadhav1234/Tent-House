@@ -25,7 +25,18 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    if (savedTheme === "dark") {
+      setIsLightMode(false);
+      document.documentElement.classList.remove("light");
+    } else {
+      setIsLightMode(true);
+      document.documentElement.classList.add("light");
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -61,8 +72,15 @@ export default function Navbar() {
   }, []);
 
   const handleToggleTheme = () => {
-    setIsLightMode(!isLightMode);
-    document.documentElement.classList.toggle("light");
+    const nextMode = !isLightMode;
+    setIsLightMode(nextMode);
+    if (nextMode) {
+      document.documentElement.classList.add("light");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+    }
   };
 
   const handleScrollTo = (id: string) => {

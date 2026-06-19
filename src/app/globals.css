@@ -204,4 +204,322 @@ body {
   }
 }
 
+/* Smooth theme transitions for background-color, color, and border-color */
+body, section, header, footer, h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, select, a, button {
+  transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease;
+}
 
+/* Premium Warm Light Theme overrides */
+html.light body {
+  background-color: #F5F5F5 !important;
+  color: #6B7280 !important;
+}
+
+/* Header/Navbar */
+html.light header {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light header nav button {
+  color: #1F2937 !important;
+  text-shadow: none !important;
+}
+
+html.light header nav button.text-gold-300 {
+  color: #D4AF37 !important;
+}
+
+html.light header button[aria-label="Toggle Theme"] {
+  color: #D4AF37 !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+html.light header button[aria-label="Toggle Theme"]:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Mobile Nav Overlay in Light Mode */
+html.light .fixed.inset-0.w-full.h-screen {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+html.light .fixed.inset-0.w-full.h-screen button {
+  color: #1F2937 !important;
+  text-shadow: none !important;
+}
+html.light .fixed.inset-0.w-full.h-screen button.text-gold-300 {
+  color: #D4AF37 !important;
+}
+html.light .fixed.inset-0.w-full.h-screen span {
+  color: #6B7280 !important;
+}
+html.light .fixed.inset-0.w-full.h-screen .bg-\[\#0d0608\]\/40 {
+  background-color: rgba(245, 245, 245, 0.8) !important;
+  border-top-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Hero Section */
+html.light #home {
+  background: #F5F5F5 !important;
+}
+html.light #home .opacity-30 {
+  opacity: 0.05 !important;
+}
+html.light #home h2 {
+  color: #1F2937 !important;
+  text-shadow: none !important;
+}
+html.light #home p {
+  color: #6B7280 !important;
+}
+html.light #home .text-white {
+  color: #1F2937 !important;
+}
+html.light #home .border-neutral-600 {
+  border-color: rgba(31, 41, 55, 0.2) !important;
+  color: #1F2937 !important;
+}
+html.light #home .border-neutral-600:hover {
+  border-color: #D4AF37 !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: #1F2937 !important;
+}
+
+/* Services */
+html.light #services {
+  background-color: #F7F7F7 !important;
+}
+html.light #services .bg-maroon-900\/10,
+html.light #services .bg-purple-premium-dark\/15 {
+  opacity: 0.1 !important;
+}
+html.light #services .text-center h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #services .text-center p {
+  color: #6B7280 !important;
+}
+
+/* Wedding */
+html.light #wedding {
+  background: #EFEFEF !important;
+}
+html.light #wedding .bg-pink-royal\/5 {
+  opacity: 0.1 !important;
+}
+html.light #wedding h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #wedding p {
+  color: #6B7280 !important;
+}
+html.light #wedding h3 {
+  color: #1F2937 !important;
+}
+html.light #wedding span.text-neutral-300 {
+  color: #1F2937 !important;
+}
+
+/* Jayanthi */
+html.light #jayanthi {
+  background: #F5F5F5 !important;
+}
+html.light #jayanthi .bg-purple-premium-dark\/10 {
+  opacity: 0.1 !important;
+}
+html.light #jayanthi h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #jayanthi p {
+  color: #6B7280 !important;
+}
+
+/* Gallery */
+html.light #gallery {
+  background-color: #F7F7F7 !important;
+}
+html.light #gallery h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #gallery p {
+  color: #6B7280 !important;
+}
+html.light #gallery button.bg-neutral-900 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(31, 41, 55, 0.15) !important;
+  color: #6B7280 !important;
+}
+html.light #gallery button.bg-neutral-900:hover {
+  color: #1F2937 !important;
+  border-color: #D4AF37 !important;
+}
+
+/* About Us */
+html.light #about {
+  background-color: #F5F5F5 !important;
+}
+html.light #about h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #about p {
+  color: #6B7280 !important;
+}
+html.light #about p strong {
+  color: #1F2937 !important;
+}
+html.light #about .border-l-4.border-gold-500 {
+  background-color: #EFEFEF !important;
+  color: #845e0d !important;
+}
+html.light #about .glass-panel span.text-neutral-400 {
+  color: #1F2937 !important;
+}
+
+/* Transportation */
+html.light #transport {
+  background-color: #EFEFEF !important;
+}
+html.light #transport .bg-maroon-900\/5 {
+  opacity: 0.1 !important;
+}
+html.light #transport h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #transport p {
+  color: #6B7280 !important;
+}
+html.light #transport h3 {
+  color: #1F2937 !important;
+}
+html.light #transport h4 {
+  color: #1F2937 !important;
+}
+
+/* Contact & Google Maps */
+html.light #contact {
+  background-color: #F7F7F7 !important;
+}
+html.light #contact h2 {
+  color: #1F2937 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+html.light #contact p {
+  color: #6B7280 !important;
+}
+html.light #contact .glass-panel {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+html.light #contact .glass-panel h3 {
+  color: #1F2937 !important;
+}
+html.light #contact .glass-panel label {
+  color: #6B7280 !important;
+}
+html.light #contact input,
+html.light #contact select,
+html.light #contact textarea {
+  background-color: #FFFFFF !important;
+  color: #1F2937 !important;
+  border-color: rgba(31, 41, 55, 0.15) !important;
+}
+html.light #contact input::placeholder,
+html.light #contact textarea::placeholder {
+  color: #A3A3A3 !important;
+}
+html.light #contact input:focus,
+html.light #contact select:focus,
+html.light #contact textarea:focus {
+  border-color: #D4AF37 !important;
+}
+html.light #contact a.p-5,
+html.light #contact button.p-5 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+}
+html.light #contact a.p-5 span.text-white,
+html.light #contact button.p-5 span.text-white {
+  color: #1F2937 !important;
+}
+html.light #contact .bg-neutral-900 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+}
+html.light #contact .bg-neutral-900 h4 {
+  color: #1F2937 !important;
+}
+html.light #contact .bg-neutral-900 p {
+  color: #6B7280 !important;
+}
+html.light #contact .bg-neutral-900 span.text-neutral-400 {
+  color: #6B7280 !important;
+}
+
+/* Footer */
+html.light footer {
+  background-color: #EFEFEF !important;
+  border-top-color: rgba(212, 175, 55, 0.25) !important;
+}
+html.light footer h4 {
+  color: #1F2937 !important;
+}
+html.light footer p {
+  color: #6B7280 !important;
+}
+html.light footer span {
+  color: #6B7280 !important;
+}
+html.light footer a {
+  color: #6B7280 !important;
+}
+html.light footer button {
+  color: #6B7280 !important;
+}
+html.light footer button:hover {
+  color: #D4AF37 !important;
+}
+html.light footer a:hover {
+  color: #D4AF37 !important;
+}
+html.light footer a.w-8.h-8 {
+  border-color: rgba(31, 41, 55, 0.15) !important;
+  color: #6B7280 !important;
+}
+html.light footer a.w-8.h-8:hover {
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+html.light footer .border-t.border-white\/5 {
+  border-top-color: rgba(31, 41, 55, 0.1) !important;
+}

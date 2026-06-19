@@ -21,31 +21,6 @@ interface JayanthiCard {
 export default function Jayanthi() {
   const cards: JayanthiCard[] = [
     {
-      title: "Dr. B. R. Ambedkar Jayanti",
-      themeColor: "from-blue-900/60 to-blue-950/80",
-      textColor: "text-blue-400",
-      borderColor: "group-hover:border-blue-500/50",
-      ledColor: "rgba(59, 130, 246, 0.4)",
-      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(29,78,216,0.3),transparent_70%)]",
-      badge: "Respectful Blue Theme",
-      specs: [
-        "Massive blue LED backdrop screen",
-        "Ashoka Wheel floral designs",
-        "Elegant podium & photo garlands",
-        "VIP seating & red carpet runway",
-      ],
-      motif: (
-        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)] bg-neutral-900 z-10">
-          <Image
-            src={publicAsset("/images/ambedkar.jpeg")}
-            alt="Dr. B. R. Ambedkar"
-            fill
-            className="object-cover object-top"
-          />
-        </div>
-      ),
-    },
-    {
       title: "Chhatrapati Shivaji Maharaj Jayanti",
       themeColor: "from-amber-900/60 to-orange-950/80",
       textColor: "text-amber-500",
@@ -64,6 +39,31 @@ export default function Jayanthi() {
           <Image
             src={publicAsset("/images/shivaji.jpeg")}
             alt="Chhatrapati Shivaji Maharaj"
+            fill
+            className="object-cover object-top"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Dr. B. R. Ambedkar Jayanti",
+      themeColor: "from-blue-900/60 to-blue-950/80",
+      textColor: "text-blue-400",
+      borderColor: "group-hover:border-blue-500/50",
+      ledColor: "rgba(59, 130, 246, 0.4)",
+      bgGradient: "bg-[radial-gradient(circle_at_top,rgba(29,78,216,0.3),transparent_70%)]",
+      badge: "Respectful Blue Theme",
+      specs: [
+        "Massive blue LED backdrop screen",
+        "Ashoka Wheel floral designs",
+        "Elegant podium & photo garlands",
+        "VIP seating & red carpet runway",
+      ],
+      motif: (
+        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)] bg-neutral-900 z-10">
+          <Image
+            src={publicAsset("/images/ambedkar.jpeg")}
+            alt="Dr. B. R. Ambedkar"
             fill
             className="object-cover object-top"
           />
