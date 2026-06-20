@@ -261,7 +261,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-44 sm:pt-48 lg:pt-52 pb-16 flex flex-col justify-center items-center overflow-hidden bg-gradient-to-b from-maroon-950 via-neutral-950 to-maroon-950/40"
+      className="relative min-h-screen pt-[240px] sm:pt-48 lg:pt-52 pb-16 flex flex-col justify-center items-center overflow-hidden bg-gradient-to-b from-maroon-950 via-neutral-950 to-maroon-950/40"
     >
       {/* Background Decorative Tent Drapes (SVGs & Gradients) */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 select-none -z-10">
