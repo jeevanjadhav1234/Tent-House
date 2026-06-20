@@ -19,7 +19,6 @@ interface ServiceItem {
   gradient: string;
   glow: string;
   bgImage?: string;
-  hideCTA?: boolean;
   innerGlow?: string;
 }
 
@@ -42,7 +41,6 @@ export default function Services() {
       gradient: "from-amber-600 via-gold-300 to-amber-900",
       glow: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, rgba(245,158,11,0.2) 100%)",
       bgImage: publicAsset("/images/vip_tent_bg.jpeg"),
-      hideCTA: true,
       innerGlow: "radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, rgba(253, 253, 250, 0.05) 100%)",
     },
     {
@@ -57,7 +55,6 @@ export default function Services() {
       gradient: "from-blue-600 via-purple-premium to-gold-400",
       glow: "radial-gradient(circle, rgba(106,13,173,0.45) 0%, rgba(30,58,138,0.3) 50%, rgba(212,175,55,0.2) 100%)",
       bgImage: publicAsset("/images/sound_led_bg.jpeg"),
-      hideCTA: true,
       innerGlow: "radial-gradient(circle at center, rgba(106, 13, 173, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(212, 175, 55, 0.05) 100%)",
     },
     {
@@ -207,16 +204,12 @@ export default function Services() {
                   </div>
 
                   {/* CTA Line */}
-                  {!service.hideCTA ? (
-                    <div className="flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase">
-                      <span>Explore More</span>
-                      <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                        →
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="h-4" aria-hidden="true" />
-                  )}
+                  <div className="flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase">
+                    <span>Explore More</span>
+                    <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                      →
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
