@@ -396,13 +396,16 @@ export default function ShowcaseSlider() {
           </AnimatePresence>
         </div>
 
-        {/* Floating Info Overlay (Bottom Left) */}
-        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 pointer-events-none">
-          <div className="bg-neutral-950/40 backdrop-blur-md py-2.5 px-4 md:py-3 md:px-6 rounded-2xl border border-white/5 shadow-2xl w-fit">
-            <span className="text-[10px] md:text-xs font-sans tracking-[0.25em] font-black uppercase text-gold-400 block">
+        {/* Floating Info Overlay (Bottom Left on Desktop/Tablet, Bottom Centered Text Only on Mobile) */}
+        <div className="absolute md:bottom-10 md:left-10 md:translate-x-0 bottom-[56px] left-1/2 -translate-x-1/2 z-10 pointer-events-none w-fit text-center md:text-left">
+          <div className="hidden md:block bg-neutral-950/40 backdrop-blur-md py-3 px-6 rounded-2xl border border-white/5 shadow-2xl w-fit">
+            <span className="text-xs font-sans tracking-[0.25em] font-black uppercase text-gold-400 block">
               PREMIUM EVENT SHOWCASE
             </span>
           </div>
+          <span className="block md:hidden text-[10px] font-sans tracking-[0.25em] font-black uppercase text-gold-400">
+            EVENT SHOWCASE
+          </span>
         </div>
 
         {/* Navigation Arrows (Hidden on mobile, fade in on hover on desktop) */}
