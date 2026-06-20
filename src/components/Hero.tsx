@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Calendar, Phone, Image as ImageIcon } from "lucide-react";
 import Garlands from "./Garlands";
 import { publicAsset } from "@/lib/assetPath";
+import ShowcaseSlider from "./ShowcaseSlider";
 
 // 3D Metallic Stage Truss spanning the entire width of the page
 const Truss = () => {
@@ -111,7 +112,7 @@ const RiggingAssembly = ({ side }: { side: "left" | "right" }) => {
       initial={{ opacity: 0, y: -80 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, delay: isLeft ? 0.3 : 0.6 }}
-      className={`absolute top-[56px] sm:top-[64px] md:top-[72px] z-20 pointer-events-none select-none origin-top scale-[0.45] sm:scale-[0.56] md:scale-[0.85] lg:scale-100 ${
+      className={`absolute top-[56px] sm:top-[64px] md:top-[72px] z-20 pointer-events-none select-none origin-top scale-[0.45] sm:scale-[0.56] md:scale-[0.75] lg:scale-[0.85] ${
         isLeft 
           ? "left-[-55px] sm:left-[-35px] md:left-[3%] lg:left-[4%] xl:left-[6%]" 
           : "right-[-55px] sm:right-[-35px] md:right-[3%] lg:right-[4%] xl:right-[6%]"
@@ -308,11 +309,11 @@ export default function Hero() {
       <div className="absolute top-0 right-1/4 w-[2px] h-[600px] bg-gradient-to-b from-pink-royal/30 to-transparent rotate-12 blur-sm origin-top"></div>
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-premium-dark/20 rounded-full blur-[100px] -z-10 animate-glow-pulse"></div>
 
-      {/* VIP Stage Container Grid */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8 items-center z-30">
+      {/* VIP Stage Container Flex */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center z-30">
         
-        {/* Center: Hero Information & VIP Stage Mockup */}
-        <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 flex flex-col items-center text-center">
+        {/* Center: Hero Information */}
+        <div className="w-full max-w-3xl flex flex-col items-center text-center">
           
           {/* Tagline Standalone Text */}
           <motion.div
@@ -346,7 +347,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap gap-4 justify-center mb-10"
+            className="flex flex-wrap gap-4 justify-center"
           >
             <button
               onClick={() => handleScrollTo("contact")}
@@ -372,27 +373,10 @@ export default function Hero() {
               <span>View Gallery</span>
             </button>
           </motion.div>
-
-          {/* VIP Stage photorealistic image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
-            className="relative w-full max-w-lg aspect-[16/9] bg-neutral-900 rounded-2xl border border-gold-500/30 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] group"
-          >
-            <Image
-              src={publicAsset("/images/vip_stage_hero.png")}
-              alt="Luxury VIP Ceremony Stage Setup"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 512px"
-              priority
-            />
-            {/* Premium glass lighting overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-neutral-950/20 pointer-events-none" />
-            <div className="absolute inset-0 border border-gold-500/10 rounded-2xl pointer-events-none" />
-          </motion.div>
         </div>
+
+        {/* Premium auto-playing showcase slider */}
+        <ShowcaseSlider />
       </div>
     </section>
   );

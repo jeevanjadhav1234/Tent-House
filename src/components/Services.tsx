@@ -190,7 +190,7 @@ export default function Services() {
                   </>
                 )}
 
-                {/* Content */}
+                {/* Top Section: Icon */}
                 <div className="relative z-10">
                   {/* Animated Icon Circle */}
                   <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 mb-6 group-hover:bg-gradient-to-tr group-hover:from-white/10 group-hover:to-gold-500/10 group-hover:border-gold-500/30 transition-all duration-300">
@@ -198,27 +198,26 @@ export default function Services() {
                       {service.icon}
                     </div>
                   </div>
+                </div>
 
-                  <h3 className="text-lg font-serif font-bold tracking-wide text-neutral-100 group-hover:text-gold-200 transition-colors duration-300 mb-3">
+                {/* Bottom Section: Title + CTA */}
+                <div className="relative z-10 mt-auto flex flex-col gap-4">
+                  <h3 className="text-lg font-serif font-bold tracking-wide text-neutral-100 group-hover:text-gold-200 transition-colors duration-300">
                     {service.title}
                   </h3>
 
-                  <p className={`text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 ${
-                    service.bgImage ? "line-clamp-3" : ""
-                  }`}>
-                    {service.description}
-                  </p>
+                  {/* CTA Line */}
+                  {!service.hideCTA ? (
+                    <div className="flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase">
+                      <span>Explore More</span>
+                      <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                        →
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="h-4" aria-hidden="true" />
+                  )}
                 </div>
-
-                {/* CTA Line */}
-                {!service.hideCTA && (
-                  <div className="mt-8 flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase relative z-10">
-                    <span>Explore More</span>
-                    <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                      →
-                    </span>
-                  </div>
-                )}
               </div>
             </motion.div>
           ))}
