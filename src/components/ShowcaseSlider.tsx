@@ -357,7 +357,7 @@ export default function ShowcaseSlider() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        className="w-[94%] sm:w-[90%] max-w-7xl mx-auto h-[300px] sm:h-[420px] lg:h-[560px] rounded-[16px] sm:rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-gold-500/20 mt-[28px] sm:mt-[175px] lg:mt-[200px] mb-16 sm:mb-20 lg:mb-24 relative group/slider select-none"
+        className="w-[calc(100%+12px)] -mx-[6px] md:w-[90%] max-w-7xl md:mx-auto h-[300px] md:h-[420px] lg:h-[560px] rounded-[18px] md:rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-gold-500/20 mt-[28px] md:mt-[175px] lg:mt-[200px] mb-16 md:mb-20 lg:mb-24 relative group/slider select-none"
       >
         {/* Slider Image Container */}
         <div
@@ -397,9 +397,9 @@ export default function ShowcaseSlider() {
         </div>
 
         {/* Floating Info Overlay (Bottom Left) */}
-        <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 z-10 pointer-events-none">
-          <div className="bg-neutral-950/40 backdrop-blur-md py-2.5 px-4 sm:py-3 sm:px-6 rounded-2xl border border-white/5 shadow-2xl w-fit">
-            <span className="text-[10px] sm:text-xs font-sans tracking-[0.25em] font-black uppercase text-gold-400 block">
+        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 pointer-events-none">
+          <div className="bg-neutral-950/40 backdrop-blur-md py-2.5 px-4 md:py-3 md:px-6 rounded-2xl border border-white/5 shadow-2xl w-fit">
+            <span className="text-[10px] md:text-xs font-sans tracking-[0.25em] font-black uppercase text-gold-400 block">
               PREMIUM EVENT SHOWCASE
             </span>
           </div>
@@ -542,7 +542,7 @@ export default function ShowcaseSlider() {
                 <img
                   src={sliderSlides[lightboxIndex].src}
                   alt={sliderSlides[lightboxIndex].title}
-                  className="max-w-[92vw] max-h-[85vh] sm:max-w-[85vw] sm:max-h-[80vh] object-contain select-none pointer-events-none rounded-lg border border-white/5 shadow-2xl"
+                  className="max-w-[92vw] max-h-[85vh] md:max-w-[85vw] md:max-h-[80vh] object-contain select-none pointer-events-none rounded-lg border border-white/5 shadow-2xl"
                 />
               </div>
             </motion.div>
