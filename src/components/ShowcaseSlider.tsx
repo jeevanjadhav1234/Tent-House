@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles, X } from "lucide-react";
 import Image from "next/image";
 import { publicAsset } from "@/lib/assetPath";
@@ -85,6 +85,33 @@ export default function ShowcaseSlider() {
   const isDragging = useRef(false);
   const [touchStartDist, setTouchStartDist] = useState<number | null>(null);
 
+  // Device type detection for touch-drag-to-close behavior on mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Motion values and refs for swipe gesture tracking
+  const touchStartPos = useRef<{ x: number; y: number } | null>(null);
+  const gestureDirection = useRef<"horizontal" | "vertical" | null>(null);
+  const dragY = useMotionValue(0);
+  const backdropBg = useTransform(dragY, [0, 300], ["rgba(0, 0, 0, 0.95)", "rgba(0, 0, 0, 0.25)"]);
+
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % sliderSlides.length);
   }, []);
@@ -97,24 +124,28 @@ export default function ShowcaseSlider() {
     setLightboxIndex((prev) => (prev + 1) % sliderSlides.length);
     setScale(1);
     setOffset({ x: 0, y: 0 });
-  }, []);
+    dragY.set(0);
+  }, [dragY]);
 
   const handlePrevLightbox = useCallback(() => {
     setLightboxIndex((prev) => (prev - 1 + sliderSlides.length) % sliderSlides.length);
     setScale(1);
     setOffset({ x: 0, y: 0 });
-  }, []);
+    dragY.set(0);
+  }, [dragY]);
 
   const handleOpen = (idx: number) => {
     setLightboxIndex(idx);
     setIsOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
     setScale(1);
     setOffset({ x: 0, y: 0 });
-  };
+    dragY.set(0);
+    setCurrentIndex(lightboxIndex);
+  }, [lightboxIndex, dragY]);
 
   // Autoplay functionality - Paused if hover OR lightbox is open
   useEffect(() => {
@@ -193,7 +224,7 @@ export default function ShowcaseSlider() {
     e.currentTarget.releasePointerCapture(e.pointerId);
   };
 
-  // Pinch-to-zoom touch logic + Touch swipes when scale is 1
+  // Pinch-to-zoom touch logic + Touch swipes + swipe-down-to-close on mobile
   const handleTouchStartLightbox = (e: React.TouchEvent) => {
     if (e.touches.length === 2) {
       const dist = Math.hypot(
@@ -201,9 +232,15 @@ export default function ShowcaseSlider() {
         e.touches[0].clientY - e.touches[1].clientY
       );
       setTouchStartDist(dist);
-    } else if (e.touches.length === 1 && scale === 1) {
-      setTouchEnd(null);
-      setTouchStart(e.targetTouches[0].clientX);
+      gestureDirection.current = null;
+    } else if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      touchStartPos.current = { x: touch.clientX, y: touch.clientY };
+      gestureDirection.current = null;
+      if (scale === 1) {
+        setTouchEnd(null);
+        setTouchStart(touch.clientX);
+      }
     }
   };
 
@@ -220,23 +257,78 @@ export default function ShowcaseSlider() {
       if (newScale === 1) {
         setOffset({ x: 0, y: 0 });
       }
-    } else if (e.touches.length === 1 && scale === 1) {
-      setTouchEnd(e.targetTouches[0].clientX);
+    } else if (e.touches.length === 1 && touchStartPos.current) {
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - touchStartPos.current.x;
+      const deltaY = touch.clientY - touchStartPos.current.y;
+
+      if (scale === 1) {
+        if (!gestureDirection.current) {
+          const absX = Math.abs(deltaX);
+          const absY = Math.abs(deltaY);
+          if (absX > 10 || absY > 10) {
+            if (absY > absX && isMobile) {
+              gestureDirection.current = "vertical";
+            } else {
+              gestureDirection.current = "horizontal";
+            }
+          }
+        }
+
+        if (gestureDirection.current === "vertical") {
+          // Drag downward with standard response, upward with visual resistance
+          if (deltaY > 0) {
+            dragY.set(deltaY);
+          } else {
+            dragY.set(deltaY * 0.2);
+          }
+        } else if (gestureDirection.current === "horizontal") {
+          setTouchEnd(touch.clientX);
+        }
+      }
     }
   };
 
   const handleTouchEndLightbox = () => {
     setTouchStartDist(null);
+    touchStartPos.current = null;
+
     if (scale > 1) return;
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    if (isLeftSwipe) {
-      handleNextLightbox();
-    } else if (isRightSwipe) {
-      handlePrevLightbox();
+
+    if (gestureDirection.current === "vertical") {
+      const currentY = dragY.get();
+      const threshold = window.innerHeight * 0.25; // 25% of screen height
+
+      if (currentY > threshold) {
+        // Smoothly slide off screen downward and dismiss
+        animate(dragY, window.innerHeight + 100, {
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }).then(() => {
+          handleClose();
+        });
+      } else {
+        // Bounce back to center
+        animate(dragY, 0, {
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        });
+      }
+    } else if (gestureDirection.current === "horizontal") {
+      if (touchStart !== null && touchEnd !== null) {
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) {
+          handleNextLightbox();
+        } else if (isRightSwipe) {
+          handlePrevLightbox();
+        }
+      }
     }
+    gestureDirection.current = null;
   };
 
   // Keyboard controls for Lightbox (Esc to close, Arrows to navigate)
@@ -382,7 +474,8 @@ export default function ShowcaseSlider() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-md select-none"
+            style={{ backgroundColor: backdropBg }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md select-none"
             onClick={handleClose}
           >
             {/* Close Button */}
@@ -434,7 +527,7 @@ export default function ShowcaseSlider() {
               onTouchMove={handleTouchMoveLightbox}
               onTouchEnd={handleTouchEndLightbox}
               className="relative max-w-full max-h-full flex items-center justify-center overflow-hidden"
-              style={{ touchAction: "none" }}
+              style={{ touchAction: "none", y: dragY }}
               onDoubleClick={handleDoubleTap}
             >
               <div
