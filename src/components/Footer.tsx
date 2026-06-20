@@ -91,15 +91,28 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex space-x-3.5 pt-2">
             {[
-              { icon: <InstagramIcon />, href: "https://instagram.com" },
-              { icon: <FacebookIcon />, href: "https://facebook.com" },
-              { icon: <YoutubeIcon />, href: "https://youtube.com" },
+              { 
+                icon: <InstagramIcon />, 
+                href: "https://www.instagram.com/jai_bhavani_tenthouse?igsh=MWtnb3RyaTFsYXgxag==", 
+                ariaLabel: "Visit Jai Bhavani Tent House Instagram" 
+              },
+              { 
+                icon: <FacebookIcon />, 
+                href: "https://facebook.com", 
+                ariaLabel: "Visit Jai Bhavani Tent House Facebook" 
+              },
+              { 
+                icon: <YoutubeIcon />, 
+                href: "https://youtube.com/@jaibhavanitenthouse996?si=hYbWYW7qk_exV-ep", 
+                ariaLabel: "Visit Jai Bhavani Tent House YouTube Channel" 
+              },
             ].map((soc, idx) => (
               <a
                 key={idx}
                 href={soc.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={soc.ariaLabel}
                 className="w-8 h-8 rounded-full border border-white/10 hover:border-gold-500/50 hover:bg-gold-500/10 text-neutral-400 hover:text-gold-300 flex items-center justify-center transition-all duration-300 cursor-pointer"
               >
                 {soc.icon}
@@ -168,7 +181,9 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-pink-royal shrink-0" />
-              <span className="hover:text-gold-300">info@jaibhavanitents.com</span>
+              <a href="mailto:jeevandayanandjadhav990@gmail.com" className="hover:text-gold-300">
+                jeevandayanandjadhav990@gmail.com
+              </a>
             </li>
           </ul>
         </div>

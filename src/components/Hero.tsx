@@ -310,7 +310,7 @@ export default function Hero() {
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-premium-dark/20 rounded-full blur-[100px] -z-10 animate-glow-pulse"></div>
 
       {/* VIP Stage Container Flex */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center z-30">
+      <div className="relative w-full max-w-7xl lg:max-w-none mx-auto px-4 sm:px-6 lg:px-[50px] flex flex-col items-center z-30">
         
         {/* Center: Hero Information */}
         <div className="w-full max-w-3xl flex flex-col items-center text-center">

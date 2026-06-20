@@ -357,7 +357,7 @@ export default function ShowcaseSlider() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        className="w-[calc(100%+12px)] -mx-[6px] md:w-[90%] max-w-7xl md:mx-auto h-[300px] md:h-[420px] lg:h-[560px] rounded-[18px] md:rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-gold-500/20 mt-[28px] md:mt-[175px] lg:mt-[200px] mb-16 md:mb-20 lg:mb-24 relative group/slider select-none"
+        className="w-[calc(100%+12px)] -mx-[6px] md:w-[90%] max-w-7xl md:mx-auto lg:w-full lg:max-w-none h-[300px] md:h-[420px] lg:h-[560px] rounded-[18px] md:rounded-[24px] lg:rounded-[12px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-gold-500/20 mt-[28px] md:mt-[175px] lg:mt-[120px] mb-16 md:mb-20 lg:mb-16 relative group/slider select-none"
       >
         {/* Slider Image Container */}
         <div
