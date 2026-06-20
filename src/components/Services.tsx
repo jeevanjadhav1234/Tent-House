@@ -14,7 +14,7 @@ import { publicAsset } from "@/lib/assetPath";
 
 interface ServiceItem {
   title: string;
-  description: string;
+  tagline: string;
   icon: React.ReactNode;
   gradient: string;
   glow: string;
@@ -27,8 +27,7 @@ export default function Services() {
   const services: ServiceItem[] = [
     {
       title: "Wedding Decoration",
-      description:
-        "Royal wedding mandaps, majestic floral designs, entryways, luxury sofas, and elegant drapery in gold, white, and pink themes.",
+      tagline: "Timeless Wedding Elegance",
       icon: <Heart className="w-8 h-8 text-gold-300 group-hover:text-pink-royal-light transition-colors duration-300" />,
       gradient: "from-gold-400 via-pink-royal-light to-gold-600",
       glow: "radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(224,17,95,0.2) 100%)",
@@ -38,8 +37,7 @@ export default function Services() {
 
     {
       title: "VIP Tent Setup",
-      description:
-        "Spacious premium VIP tents, climate comfort, high-quality ceiling cloth overlays, and luxury furniture seating.",
+      tagline: "Premium Event Comfort",
       icon: <Tent className="w-8 h-8 text-gold-400 group-hover:text-amber-200 transition-colors duration-300" />,
       gradient: "from-amber-600 via-gold-300 to-amber-900",
       glow: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, rgba(245,158,11,0.2) 100%)",
@@ -49,8 +47,7 @@ export default function Services() {
     },
     {
       title: "Sound System & LED Wall",
-      description:
-        "Professional sound systems and high-resolution LED walls for weddings, political events, cultural programs, and VIP functions. Complete audio-visual solutions with crystal-clear sound and stunning visuals. Suitable for events of all sizes.",
+      tagline: "Professional Event Production",
       icon: (
         <div className="relative w-8 h-8">
           <Volume2 className="w-5 h-5 text-blue-400 absolute top-0 left-0" />
@@ -65,8 +62,7 @@ export default function Services() {
     },
     {
       title: "Jayanthi Celebrations",
-      description:
-        "Professional stage setups and event arrangements for Ambedkar Jayanthi, Shivaji Maharaj Jayanthi, Sant Sevalal Maharaj Jayanthi, and other cultural celebrations.",
+      tagline: "Traditional Stage Excellence",
       icon: <Flame className="w-8 h-8 text-orange-500 group-hover:text-gold-300 transition-colors duration-300" />,
       gradient: "from-orange-600 via-gold-400 to-amber-800",
       glow: "radial-gradient(circle, rgba(249,115,22,0.45) 0%, rgba(212,175,55,0.25) 50%, rgba(180,83,9,0.1) 100%)",
@@ -75,8 +71,7 @@ export default function Services() {
     },
     {
       title: "Transportation Services",
-      description:
-        "Reliable transportation services with Eicher trucks and logistics support for tents, sound systems, LED walls, stage materials, and event equipment.",
+      tagline: "Safe & Timely Transport",
       icon: <Truck className="w-8 h-8 text-orange-500 group-hover:text-gold-300 transition-colors duration-300" />,
       gradient: "from-orange-500 via-zinc-400 to-gold-500",
       glow: "radial-gradient(circle, rgba(249,115,22,0.4) 0%, rgba(148,163,184,0.25) 50%, rgba(212,175,55,0.15) 100%)",
@@ -201,10 +196,15 @@ export default function Services() {
                 </div>
 
                 {/* Bottom Section: Title + CTA */}
-                <div className="relative z-10 mt-auto flex flex-col gap-4">
-                  <h3 className="text-lg font-serif font-bold tracking-wide text-neutral-100 group-hover:text-gold-200 transition-colors duration-300">
-                    {service.title}
-                  </h3>
+                <div className="relative z-10 mt-auto flex flex-col gap-3">
+                  <div>
+                    <h3 className="text-lg font-serif font-bold tracking-wide text-neutral-100 group-hover:text-gold-200 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-[13px] font-serif text-[#F8F8F8]/90 italic tracking-wide font-medium mt-1">
+                      {service.tagline}
+                    </p>
+                  </div>
 
                   {/* CTA Line */}
                   {!service.hideCTA ? (
