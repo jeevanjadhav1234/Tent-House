@@ -122,12 +122,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{
-                y: -8,
-                rotateX: 2,
-                rotateY: 2,
-              }}
-              className="perspective-1000 group cursor-pointer relative w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] max-w-[380px] flex flex-col"
+              className="group cursor-pointer relative w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] max-w-[380px] flex flex-col"
               onClick={() => {
                 // Scroll to relevant section based on service type
                 if (service.title.toLowerCase().includes("wedding")) {
@@ -141,44 +136,20 @@ export default function Services() {
                 }
               }}
             >
-              {/* Glowing Card Shadow background */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"
-                style={{
-                  background: service.glow,
-                }}
-              ></div>
-
-              {/* Main Card */}
-              <div className={`h-full rounded-2xl p-6 glass-panel flex flex-col justify-between relative overflow-hidden transition-all duration-300 group-hover:border-gold-500/40 min-h-[280px] ${
-                service.bgImage ? "group-hover:shadow-[0_0_25px_rgba(212,175,55,0.25)] group-hover:border-gold-400/50" : ""
-              }`}>
-                {/* Thin Gradient Border Line at the top */}
-                <div
-                  className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${service.gradient}`}
-                ></div>
-
-                {/* Background Image with Zoom and Overlay (if present) */}
+              {/* Main Card Container styled like Gallery card */}
+              <div className="relative w-full h-full min-h-[280px] rounded-2xl overflow-hidden border border-white/5 cursor-pointer bg-neutral-900 p-6 flex flex-col justify-between transition-all duration-300 group-hover:border-white/10 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.65)]">
+                {/* Background Image with Zoom and Overlay */}
                 {service.bgImage && (
                   <>
                     <div className="absolute inset-0 overflow-hidden">
                       <img
                         src={service.bgImage}
-                        alt=""
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105 filter brightness-110 contrast-105"
                       />
                     </div>
-                    {/* Dark gradient overlay to ensure readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/55"></div>
-                    {/* Inner gold/pink gradient overlay for luxury feel */}
-                    {service.innerGlow && (
-                      <div
-                        className="absolute inset-0 mix-blend-color-dodge opacity-60 pointer-events-none"
-                        style={{
-                          background: service.innerGlow
-                        }}
-                      ></div>
-                    )}
+                    {/* Gradient overlay exactly like Gallery cards */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"></div>
                   </>
                 )}
 
@@ -195,18 +166,18 @@ export default function Services() {
                 {/* Bottom Section: Title + CTA */}
                 <div className="relative z-10 mt-auto flex flex-col gap-3">
                   <div>
-                    <h3 className="text-lg font-serif font-bold tracking-wide text-neutral-100 group-hover:text-gold-200 transition-colors duration-300">
+                    <h3 className="text-base font-serif font-bold !text-white group-hover:!text-gold-200 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-[13px] font-serif text-[#F8F8F8]/90 italic tracking-wide font-medium mt-1">
+                    <p className="text-xs font-sans !text-neutral-300/80 mt-1 line-clamp-1">
                       {service.tagline}
                     </p>
                   </div>
 
-                  {/* CTA Line */}
-                  <div className="flex items-center justify-between text-xs font-bold font-sans tracking-widest text-gold-400 group-hover:text-gold-200 uppercase">
-                    <span>Explore More</span>
-                    <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                  {/* EXPLORE MORE CTA Button */}
+                  <div className="flex items-center justify-between text-[11px] font-bold font-sans tracking-widest !text-gold-400 group-hover:!text-gold-200 uppercase mt-1">
+                    <span>EXPLORE MORE</span>
+                    <span className="transform translate-x-0 group-hover:translate-x-1.5 transition-transform duration-300">
                       →
                     </span>
                   </div>
