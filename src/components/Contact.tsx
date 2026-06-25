@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, MessageCircle, Send, Star, CheckCircle, ExternalLink } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Send, Star, CheckCircle } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -270,18 +270,6 @@ export default function Contact() {
 
               {/* Map frame viewport */}
               <div className="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-[0_0_30px_rgba(212,175,55,0.25)] relative group">
-                
-                {/* Floating "Open in Maps" Button */}
-                <a
-                  href="https://www.google.com/maps?cid=5446970792604097249"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-4 right-4 z-10 px-4 py-2 bg-neutral-950/80 hover:bg-neutral-950 backdrop-blur-md border border-gold-500/30 hover:border-gold-500/80 text-gold-400 hover:text-white rounded-xl text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 flex items-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.5)] group/btn hover:scale-105"
-                >
-                  <span>Open in Maps</span>
-                  <ExternalLink size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                </a>
-
                 {/* Embed Map Iframe */}
                 <iframe
                   title="Jai Bhavani Tent House Navanihal Google Map location"
